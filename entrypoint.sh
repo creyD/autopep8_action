@@ -24,10 +24,7 @@ pip install -q --upgrade pip
 pip install -q autopep8
 
 # Install custom project dependencies if applicable
-if ! ["$INPUT_DEPENDENCIES" = "false"];
-then
-  pip install -r $INPUT_DEPENDENCIES
-fi
+pip install -r $INPUT_DEPENDENCIES
 
 # Apply PEP 8
 echo "Running autopep8..."

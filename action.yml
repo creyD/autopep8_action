@@ -18,7 +18,7 @@ inputs:
   dependencies:
     description: Path for the repositories 'requirements.txt'. If you have none, you may skip this.
     required: false
-    default: 'false'
+    default: 'requirements.txt'
   branch:
     description: Branch which the changes are merged to
     required: true

@@ -11,7 +11,7 @@ The following parameters can be used in your custom action configuration.
 | commit_message | :x: | 'Adjusted files for PEP-8 compliance' | Custom git commit message|
 | commit_options | :x: | '&ast;' | Custom git commit options|
 | file_pattern | :x: | '.' | Custom file pattern for `git add`|
-| dependencies | :x: | 'false' |  Path for the repositories 'requirements.txt'. If you have none, you may skip this.|
+| dependencies | :x: | 'requirements.txt' |  Path for the repositories 'requirements.txt'. If you have none, you may skip this.|
 | branch | :white_check_mark: | - | The specific branch you want to merge into. Use ${{ github.head_ref }} if you want to use this with pull requests.|
 
 ### Example
