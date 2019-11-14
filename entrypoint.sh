@@ -24,11 +24,11 @@ pip install -q --upgrade pip
 pip install -q autopep8
 
 # Install custom project dependencies if applicable
-pip install -r $INPUT_DEPENDENCIES
+pip install -r $INPUT_DEPENDENCIES || echo "No dependency file found."
 
 # Apply PEP 8
 echo "Running autopep8..."
-autopep8 --in-place -r .
+autopep8 --in-place -r . || echo "Problem running autopep8."
 
 if ! git diff --quiet
 then
