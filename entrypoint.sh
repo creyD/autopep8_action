@@ -19,12 +19,12 @@ EOF
 }
 
 echo "Installing dependencies..."
-pip install --upgrade pip
+pip install -q --upgrade pip
 # Install dependencies
-pip install autopep8
+pip install -q autopep8
 
 # Install custom project dependencies if applicable
-if ! $INPUT_DEPENDENCIES == "false"
+if ! ["$INPUT_DEPENDENCIES" = "false"];
 then
   pip install -r $INPUT_DEPENDENCIES
 fi
