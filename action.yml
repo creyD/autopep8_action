@@ -1,0 +1,38 @@
+name: 'Autopep8'
+description: 'Automatically runs the autopep8 command against any pull request created.'
+
+author: Conrad Großer <grosserconrad@gmail.com>
+
+inputs:
+  commit_message:
+    description: Commit message
+    required: false
+    default: 'Adjusted files for PEP-8 compliance'
+  commit_options:
+    description: Commit options
+    required: false
+  file_pattern:
+    description: File pattern used for "git add"
+    required: false
+    default: '*'
+  dependencies:
+    description: Path for the repositories 'requirements.txt'. If you have none, you may skip this.
+    required: false
+    default: 'false'
+  branch:
+    description: Branch which the changes are merged to
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.commit_message }}
+    - ${{ inputs.commit_options }}
+    - ${{ inputs.file_pattern }}
+    - ${{ inputs.dependencies }}
+    - ${{ inputs.branch }}
+
+branding:
+  icon: 'fast-forward'
+  color: 'green'
