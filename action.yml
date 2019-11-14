@@ -1,5 +1,5 @@
-name: 'Autopep8'
-description: 'Automatically runs the autopep8 command against any pull request created.'
+name: 'Autopep8 Action'
+description: 'Automatically runs the autopep8 command against any commit/ pull request created.'
 
 author: Conrad Großer <grosserconrad@gmail.com>
 
