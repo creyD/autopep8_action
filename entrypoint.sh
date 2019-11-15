@@ -28,7 +28,7 @@ pip install -r $INPUT_DEPENDENCIES || echo "No dependency file found."
 
 # Apply PEP 8
 echo "Running autopep8..."
-autopep8 --in-place -r . || echo "Problem running autopep8."
+autopep8 --in-place -r $INPUT_CHECKPATH ${INPUT_AUTOPARAMETERS:+"$INPUT_AUTOPARAMETERS"} || echo "Problem running autopep8."
 
 if ! git diff --quiet
 then
