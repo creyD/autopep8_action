@@ -29,6 +29,7 @@ inputs:
   autoparameters:
     description: Parameters for autopep8
     required: false
+    default: ''
 
 runs:
   using: 'docker'
