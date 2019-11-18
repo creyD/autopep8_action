@@ -44,7 +44,7 @@ jobs:
 
 ## Issues
 
-Please report all bugs and feature request using the [GitHub issues function](https://github.com/creyD/action_autopep8/issues/new).
+Please report all bugs and feature request using the [GitHub issues function](https://github.com/creyD/autopep8_action/issues/new).
 
 ## Special Thanks
 
