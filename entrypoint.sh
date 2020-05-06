@@ -21,8 +21,8 @@ EOF
 }
 
 echo "Installing autopep8..."
-sudo pip install -q --upgrade pip
-sudo pip install -q autopep8
+pip install -q --upgrade pip
+pip install -q autopep8
 
 echo "Running autopep8..."
 autopep8 -i -r $INPUT_CHECKPATH $INPUT_OPTIONS || echo "Problem running autopep8!"
