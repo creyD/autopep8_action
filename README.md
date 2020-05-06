@@ -15,6 +15,8 @@ The following parameters can be used in your custom action configuration.
 | branch | :white_check_mark: | - | The specific branch you want to merge into. Use ${{ github.head_ref }} if you want to use this with pull requests. |
 | checkpath | :x: | '.' | The path autopep8 checks |
 | autoparameters | :x: | ' ' | Parameters to use with autopep8 |
+| dry | :x: | false | Dry-run the action to fail when detecting PEP-8 uncompliant files, instead of automatically fixing them. |
+
 
 ### Example
 

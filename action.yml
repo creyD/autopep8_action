@@ -30,6 +30,10 @@ inputs:
     description: Parameters for autopep8
     required: false
     default: ''
+  dry:
+    description: Should this script apply autopep8 directly or just warn?
+    required: false
+    default: false
 
 runs:
   using: 'docker'

@@ -32,16 +32,20 @@ autopep8 -i -r $INPUT_CHECKPATH $INPUT_AUTOPARAMETERS || echo "Problem running a
 
 if ! git diff --quiet
 then
-  echo "Commiting and pushing changes."
-  # Calling method to configure the git environemnt
-  git_setup
-  # Switch to the actual branch
-  git checkout $INPUT_BRANCH
-
-  git add "${INPUT_FILE_PATTERN}"
-
-  git commit -m "$INPUT_COMMIT_MESSAGE" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" ${INPUT_COMMIT_OPTIONS:+"$INPUT_COMMIT_OPTIONS"}
-  git push --set-upstream origin "HEAD:$INPUT_BRANCH"
+  if $INPUT_DRY; then
+    echo "Found non-compliant files!"
+    exit 1
+  else
+    # Calling method to configure the git environemnt
+    _git_setup
+    echo "Commiting and pushing changes..."
+    # Add changes to git
+    git add "${INPUT_FILE_PATTERN}" || echo "Problem adding your files with pattern ${INPUT_FILE_PATTERN}"
+    # Commit and push changes back
+    git commit -m "$INPUT_COMMIT_MESSAGE" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" ${INPUT_COMMIT_OPTIONS:+"$INPUT_COMMIT_OPTIONS"}
+    git push origin
+    echo "Changes pushed successfully."
+  fi
 else
   echo "Nothing to commit. Exiting."
 fi
