@@ -12,7 +12,6 @@ The following parameters can be used in your custom action configuration.
 | commit_options | :x: | - | Custom git commit options|
 | file_pattern | :x: | '&ast;' | Custom file pattern for `git add`|
 | dependencies | :x: | 'requirements.txt' |  Path for the repositories 'requirements.txt'. If you have none, you may skip this.|
-| branch | :white_check_mark: | - | The specific branch you want to merge into. Use ${{ github.head_ref }} if you want to use this with pull requests. |
 | checkpath | :x: | '.' | The path autopep8 checks |
 | autoparameters | :x: | ' ' | Parameters to use with autopep8 |
 | dry | :x: | false | Dry-run the action to fail when detecting PEP-8 uncompliant files, instead of automatically fixing them. |

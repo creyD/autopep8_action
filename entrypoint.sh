@@ -1,21 +1,28 @@
 #!/bin/sh -l
-
+# e is for exiting the script automatically if a command fails, u is for exiting if a variable is not set
+# x would be for showing the commands before they are executed
 set -eu
 
+# FUNCTIONS
 # Function for setting up git env in the docker container (copied from https://github.com/stefanzweifel/git-auto-commit-action/blob/master/entrypoint.sh)
-git_setup ( ) {
-  cat <<- EOF > $HOME/.netrc
-        machine github.com
-        login $GITHUB_ACTOR
-        password $GITHUB_TOKEN
-        machine api.github.com
-        login $GITHUB_ACTOR
-        password $GITHUB_TOKEN
+_git_setup ( ) {
+    cat <<- EOF > $HOME/.netrc
+      machine github.com
+      login $GITHUB_ACTOR
+      password $GITHUB_TOKEN
+      machine api.github.com
+      login $GITHUB_ACTOR
+      password $GITHUB_TOKEN
 EOF
     chmod 600 $HOME/.netrc
 
     git config --global user.email "actions@github.com"
-    git config --global user.name "GitHub Actions"
+    git config --global user.name "GitHub Action"
+}
+
+# Checks if any files are changed
+_git_changed() {
+    [[ -n "$(git status -s)" ]]
 }
 
 echo "Installing dependencies..."
@@ -30,7 +37,7 @@ pip install -r $INPUT_DEPENDENCIES || echo "No dependency file found."
 echo "Running autopep8..."
 autopep8 -i -r $INPUT_CHECKPATH $INPUT_AUTOPARAMETERS || echo "Problem running autopep8!"
 
-if ! git diff --quiet
+if _git_changed;
 then
   if $INPUT_DRY; then
     echo "Found non-compliant files!"

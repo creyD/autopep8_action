@@ -19,9 +19,6 @@ inputs:
     description: Path for the repositories 'requirements.txt'. If you have none, you may skip this.
     required: false
     default: 'requirements.txt'
-  branch:
-    description: Branch which the changes are merged to
-    required: true
   checkpath:
     description: Path autopep8 checks
     required: false
@@ -38,14 +35,6 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.commit_message }}
-    - ${{ inputs.commit_options }}
-    - ${{ inputs.file_pattern }}
-    - ${{ inputs.dependencies }}
-    - ${{ inputs.branch }}
-    - ${{ inputs.checkpath }}
-    - ${{ inputs.autoparameters }}
 
 branding:
   icon: 'fast-forward'
