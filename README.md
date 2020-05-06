@@ -8,9 +8,9 @@ The following parameters can be used in your custom action configuration.
 
 | Parameter | Required | Default | Description |
 | - | - | - | - |
-| commit_message | :x: | 'Adjusted files for PEP-8 compliance' | Custom git commit message|
-| commit_options | :x: | - | Custom git commit options|
-| file_pattern | :x: | '&ast;' | Custom file pattern for `git add`|
+| commit_message | :x: | 'Adjusted files for PEP-8 compliance' | Custom git commit message |
+| commit_options | :x: | - | Custom git commit options |
+| file_pattern | :x: | '&ast;' | Custom file pattern for `git add` |
 | checkpath | :x: | '.' | The path autopep8 checks |
 | options | :x: | ' ' | Parameters to use with autopep8 |
 | dry | :x: | false | Dry-run the action to fail when detecting PEP-8 uncompliant files, instead of automatically fixing them. |
