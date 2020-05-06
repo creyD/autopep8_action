@@ -5,7 +5,7 @@ set -eu
 
 # FUNCTIONS
 # Function for setting up git env in the docker container (copied from https://github.com/stefanzweifel/git-auto-commit-action/blob/master/entrypoint.sh)
-_git_setup {
+_git_setup() {
     cat <<- EOF > $HOME/.netrc
       machine github.com
       login $GITHUB_ACTOR
@@ -21,7 +21,7 @@ EOF
 }
 
 # Checks if any files are changed
-_git_changed {
+_git_changed() {
     [[ -n "$(git status -s)" ]]
 }
 
