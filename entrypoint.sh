@@ -25,9 +25,8 @@ _git_changed() {
     [[ -n "$(git status -s)" ]]
 }
 
-echo "Installing dependencies..."
+echo "Installing autopep8..."
 pip install -q --upgrade pip
-# Install dependencies
 pip install -q autopep8
 
 # Install custom project dependencies if applicable

@@ -21,23 +21,26 @@ The following parameters can be used in your custom action configuration.
 
 This is a simple usage example of this script:
 
-```
-name: Autopep 8
+```yaml
+# This action works with pull requests and pushes
+name: Continuous Integration
 
-on: [pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+    - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
-        fetch-depth: 1
+        # Make sure the actual branch is checked out when running on pull requests
+        ref: ${{ github.head_ref }}
     - uses: creyD/action_autopep8@master
-      with:
-        dependencies: 'requirements.txt'
-        branch: ${{ github.head_ref }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
