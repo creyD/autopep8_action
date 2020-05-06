@@ -1,5 +1,5 @@
-name: 'Autopep8 Action'
-description: 'Automatically runs the autopep8 command against any commit/ pull request created.'
+name: Autopep8 Action
+description: Automatically runs the autopep8 command on all your changes.
 
 author: Conrad Großer <grosserconrad@gmail.com>
 
@@ -12,36 +12,25 @@ inputs:
     description: Commit options
     required: false
   file_pattern:
-    description: File pattern used for "git add"
+    description: File pattern used for `git add`
     required: false
     default: '*'
-  dependencies:
-    description: Path for the repositories 'requirements.txt'. If you have none, you may skip this.
-    required: false
-    default: 'requirements.txt'
-  branch:
-    description: Branch which the changes are merged to
-    required: true
   checkpath:
     description: Path autopep8 checks
     required: false
     default: '.'
-  autoparameters:
+  options:
     description: Parameters for autopep8
     required: false
     default: ''
+  dry:
+    description: Should this script apply autopep8 directly or just warn?
+    required: false
+    default: false
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.commit_message }}
-    - ${{ inputs.commit_options }}
-    - ${{ inputs.file_pattern }}
-    - ${{ inputs.dependencies }}
-    - ${{ inputs.branch }}
-    - ${{ inputs.checkpath }}
-    - ${{ inputs.autoparameters }}
 
 branding:
   icon: 'fast-forward'

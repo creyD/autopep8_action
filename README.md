@@ -8,35 +8,38 @@ The following parameters can be used in your custom action configuration.
 
 | Parameter | Required | Default | Description |
 | - | - | - | - |
-| commit_message | :x: | 'Adjusted files for PEP-8 compliance' | Custom git commit message|
-| commit_options | :x: | - | Custom git commit options|
-| file_pattern | :x: | '&ast;' | Custom file pattern for `git add`|
-| dependencies | :x: | 'requirements.txt' |  Path for the repositories 'requirements.txt'. If you have none, you may skip this.|
-| branch | :white_check_mark: | - | The specific branch you want to merge into. Use ${{ github.head_ref }} if you want to use this with pull requests. |
+| commit_message | :x: | 'Adjusted files for PEP-8 compliance' | Custom git commit message |
+| commit_options | :x: | - | Custom git commit options |
+| file_pattern | :x: | '&ast;' | Custom file pattern for `git add` |
 | checkpath | :x: | '.' | The path autopep8 checks |
-| autoparameters | :x: | ' ' | Parameters to use with autopep8 |
+| options | :x: | ' ' | Parameters to use with autopep8 |
+| dry | :x: | false | Dry-run the action to fail when detecting PEP-8 uncompliant files, instead of automatically fixing them. |
+
 
 ### Example
 
 This is a simple usage example of this script:
 
-```
-name: Autopep 8
+```yaml
+# This action works with pull requests and pushes
+name: Continuous Integration
 
-on: [pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+    - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
-        fetch-depth: 1
+        # Make sure the actual branch is checked out when running on pull requests
+        ref: ${{ github.head_ref }}
     - uses: creyD/action_autopep8@master
-      with:
-        dependencies: 'requirements.txt'
-        branch: ${{ github.head_ref }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
