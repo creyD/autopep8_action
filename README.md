@@ -11,7 +11,6 @@ The following parameters can be used in your custom action configuration.
 | commit_message | :x: | 'Adjusted files for PEP-8 compliance' | Custom git commit message|
 | commit_options | :x: | - | Custom git commit options|
 | file_pattern | :x: | '&ast;' | Custom file pattern for `git add`|
-| dependencies | :x: | 'requirements.txt' |  Path for the repositories 'requirements.txt'. If you have none, you may skip this.|
 | checkpath | :x: | '.' | The path autopep8 checks |
 | options | :x: | ' ' | Parameters to use with autopep8 |
 | dry | :x: | false | Dry-run the action to fail when detecting PEP-8 uncompliant files, instead of automatically fixing them. |
