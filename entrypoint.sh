@@ -27,8 +27,7 @@ pip install -q autopep8
 echo "Running autopep8..."
 autopep8 -i -r $INPUT_CHECKPATH $INPUT_OPTIONS || echo "Problem running autopep8!"
 
-if -n "$(git status -s)";
-then
+if [-n "$(git status -s)"]; then
   if $INPUT_DRY; then
     echo "Found non-compliant files!"
     exit 1
