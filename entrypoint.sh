@@ -35,7 +35,7 @@ pip install -r $INPUT_DEPENDENCIES || echo "No dependency file found."
 
 # Apply PEP 8
 echo "Running autopep8..."
-autopep8 -i -r $INPUT_CHECKPATH $INPUT_AUTOPARAMETERS || echo "Problem running autopep8!"
+autopep8 -i -r $INPUT_CHECKPATH $INPUT_OPTIONS || echo "Problem running autopep8!"
 
 if _git_changed;
 then

@@ -12,7 +12,7 @@ inputs:
     description: Commit options
     required: false
   file_pattern:
-    description: File pattern used for "git add"
+    description: File pattern used for `git add`
     required: false
     default: '*'
   dependencies:
@@ -23,7 +23,7 @@ inputs:
     description: Path autopep8 checks
     required: false
     default: '.'
-  autoparameters:
+  options:
     description: Parameters for autopep8
     required: false
     default: ''
