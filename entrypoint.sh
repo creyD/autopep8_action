@@ -20,12 +20,10 @@ EOF
     git config --global user.name "GitHub Action"
 }
 
-echo "Installing autopep8..."
-pip install -q --upgrade pip
-pip install -q autopep8
-
 echo "Running autopep8..."
 autopep8 -i -r $INPUT_CHECKPATH $INPUT_OPTIONS || echo "Problem running autopep8!"
+
+git status -s
 
 if [-n "$(git status -s)"]; then
   if $INPUT_DRY; then
