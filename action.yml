@@ -27,6 +27,10 @@ inputs:
     description: Should this script apply autopep8 directly or just warn?
     required: false
     default: false
+  no_commit:
+    description: Can be used to avoid committing the changes
+    required: false
+    default: false
 
 runs:
   using: 'docker'

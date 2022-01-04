@@ -12,6 +12,7 @@ The following parameters can be used in your custom action configuration.
 | commit_options | :x: | - | Custom git commit options |
 | file_pattern | :x: | '&ast;' | Custom file pattern for `git add` |
 | checkpath | :x: | '.' | The path autopep8 checks |
+| no_commit | :x: | False | Avoid committing, if used in a pipeline |
 | options | :x: | ' ' | Parameters to use with autopep8 |
 | dry | :x: | false | Dry-run the action to fail when detecting PEP-8 uncompliant files, instead of automatically fixing them. |
 
