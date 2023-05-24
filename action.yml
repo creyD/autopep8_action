@@ -31,6 +31,10 @@ inputs:
     description: Can be used to avoid committing the changes
     required: false
     default: false
+  github_token:
+    description: GitHub Token or PAT token used to authenticate against a repository
+    required: false
+    default: ${{ github.token }}
 
 runs:
   using: 'docker'
