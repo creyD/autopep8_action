@@ -1,9 +1,9 @@
-FROM node:lts-alpine3.9
+FROM python:3.11.3-slim-bullseye
 
-RUN apk update && apk add --no-cache bash git openssh python3 py3-pip
+RUN apt update && apt install -y --no-install-recommends git
 
-RUN pip3 install --no-cache-dir -q --upgrade pip
-RUN pip3 install --no-cache-dir -q autopep8
+RUN pip install --no-cache-dir -q --upgrade pip
+RUN pip install --no-cache-dir -q autopep8
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
