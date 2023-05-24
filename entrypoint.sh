@@ -31,9 +31,6 @@ _git_changes() {
 }
 
 # PROGRAM
-# Changing to the directory
-cd "$GITHUB_ACTION_PATH"
-
 echo "Running autopep8..."
 autopep8 $INPUT_CHECKPATH $INPUT_OPTIONS || echo "Problem running autopep8!"
 
