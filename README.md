@@ -23,6 +23,8 @@ The following parameters can be used in your custom action configuration.
 | dry | :x: | false | Dry-run the action to fail when detecting PEP-8 uncompliant files, instead of automatically fixing them. |
 | github_token | :x: | `${{ github.token }}` | The default [GITHUB_TOKEN](https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret) or a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
+> Note: using the same_commit option may lead to problems if other actions are relying on the commit being the same before and after the prettier action has ran. Keep this in mind.
+
 ### Example
 
 This is a simple usage example of this script:
@@ -48,6 +50,8 @@ jobs:
         ref: ${{ github.head_ref }}
     - uses: creyD/action_autopep8@v3.1
 ```
+
+More documentation for writing a workflow can be found [here](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions).
 
 ## Issues
 

@@ -2,6 +2,7 @@
 # e is for exiting the script automatically if a command fails, u is for exiting if a variable is not set
 # x would be for showing the commands before they are executed
 set -eu
+shopt -s globstar
 
 # FUNCTIONS
 # Function for setting up git env in the docker container (copied from https://github.com/stefanzweifel/git-auto-commit-action/blob/master/entrypoint.sh)
@@ -25,6 +26,14 @@ _git_changed() {
     [[ -n "$(git status -s)" ]]
 }
 
+_git_changes() {
+    git diff
+}
+
+# PROGRAM
+# Changing to the directory
+cd "$GITHUB_ACTION_PATH"
+
 echo "Running autopep8..."
 autopep8 -i -r $INPUT_CHECKPATH $INPUT_OPTIONS || echo "Problem running autopep8!"
 
@@ -35,7 +44,9 @@ fi
 if _git_changed;
 then
   if $INPUT_DRY; then
-    echo "Found non-compliant files!"
+    echo "Found non-compliant files:"
+    _git_changes
+    echo "Finishing dry-run. Exiting before committing."
     exit 1
   else
     # Calling method to configure the git environemnt
