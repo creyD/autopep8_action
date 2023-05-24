@@ -35,7 +35,7 @@ _git_changes() {
 cd "$GITHUB_ACTION_PATH"
 
 echo "Running autopep8..."
-autopep8 -i -r $INPUT_CHECKPATH $INPUT_OPTIONS || echo "Problem running autopep8!"
+autopep8 $INPUT_CHECKPATH $INPUT_OPTIONS || echo "Problem running autopep8!"
 
 if $INPUT_NO_COMMIT; then
   exit 0
